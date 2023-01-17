@@ -1,1 +1,24 @@
 先ほどPHPadminのエラーを解決してXAMPのコンポーネントを確認したら、またエラーがでました！
+
+1 エラー内容
+Error: MySQL shutdown unexpectedly.
+This may be due to a blocked port, missing dependencies, 
+improper privileges, a crash, or a shutdown by another method.
+Press the Logs button to view error logs and check
+the Windows Event Viewer for more clues
+If you need more help, copy and post this
+entire log window on the forums
+
+こちらのエラーは結構有名なのかすぐに検索でヒットしました。
+
+2原因
+以前使っていたportが今使われてますよー！と怒られたので
+新しいportを用意することにしました。
+
+３やったこと
+XAMPコンポーネント内でconfigのファイル中身を変更
+ファイルの中身→port=3306
+修正後　      →port=3307
+
+
+４エラー解決しました。
