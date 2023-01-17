@@ -1,0 +1,24 @@
+久しぶりにPHPadminを開いたらエラーが出たので、報告します。
+
+error内容：
+
+1エラー
+MySQL のメッセージ: ドキュメント
+
+接続できません。設定が無効です。
+ mysqli::real_connect(): (HY000/1045): Access denied for user 'pma'@'localhost' (using password: NO)
+ 設定ファイルに定義されている管理ユーザ(controluser)での接続に失敗しました。
+ mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO)
+ MySQL サーバに接続しようとしましたが拒否されました。config.inc.php のホスト、ユーザ名、パスワードが MySQL サーバの管理者から与えられた情報と一致するか確認してください。
+
+2原因
+・以前にPHP（PHPadmin）で新しいアカウントを作成時にパスワードを変更又は追加したため、接続を拒否された。
+・デフォルトで使っていたパスワードと誤りがあった為、エラーが表示された。
+
+３やったこと
+XAMP→PHPadminファイル→config.phpのpasswordを開いてデフォルトのpasswordのままか確認した！
+ファイルの中身　→$cfg['Servers'][$i]['password'] = '';
+ファイル修正後　→$cfg['Servers'][$i]['password'] = '新しいパスワードを追加';
+
+４エラーが無事に解決しました。
+port番号とlisterは何も触らずに解決できました。
